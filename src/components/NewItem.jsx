@@ -23,24 +23,22 @@ const NewItem = ({ addItem }) => {
 
   const submitForm = (event) => {
     event.preventDefault();
-
+  
     // ตรวจสอบค่าที่ผู้ใช้เลือกหรือไม่
-    const rawDate = inputsRef.current.date?.value;
+    const rawDate = inputsRef.current.date?.value; // ค่าที่กรอกใน input date
     const finalDate = rawDate
-      ? new Date(rawDate).toLocaleString() // หากกรอก ใช้ค่าวันที่จาก input
-      : new Date().toLocaleString(); // หากไม่กรอก ใช้วันที่ปัจจุบัน
-
-      const itemData = {
-        item_type: isIncome ? "รายรับ" : "รายจ่าย",
-        title: inputsRef.current.title?.value || "",
-        amount: isNaN(parseFloat(inputsRef.current.amount?.value)) ? 0 : parseFloat(inputsRef.current.amount?.value),
-        description: inputsRef.current.description?.value || "",
-        date: finalDate,
-      };
-      
-
-    // console.log("Item Data", itemData);
-
+      ? rawDate // หากกรอก ใช้ค่าวันที่จาก input
+      : getCurrentDate(); // หากไม่กรอก ใช้วันที่ปัจจุบัน
+  
+    const itemData = {
+      item_type: isIncome ? "รายรับ" : "รายจ่าย",
+      title: inputsRef.current.title?.value || "",
+      amount: isNaN(parseFloat(inputsRef.current.amount?.value)) ? 0 : parseFloat(inputsRef.current.amount?.value),
+      description: inputsRef.current.description?.value || "",
+      date: finalDate, // ใช้วันที่ที่ได้จากการตรวจสอบ
+    };
+  
+    // เพิ่มข้อมูลในรายการ
     addItem(itemData);
     formRef.current.reset();
     setIsIncome(true);

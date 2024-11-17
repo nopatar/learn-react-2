@@ -9,7 +9,7 @@ const HomePage = () => {
     { id: 1, item_type: "รายรับ", title: "เงินเดือน", amount: 30000, date: "2024-01-05" },
     { id: 2, item_type: "รายจ่าย", title: "ค่าเช่าบ้าน", amount: 9000, date: "2024-01-10" },
     { id: 4, item_type: "รายรับ", title: "โบนัส", amount: 10000, date: "2024-02-01" },
-    { id: 3, item_type: "รายจ่าย", title: "ค่าโทรศัพท์", amount: 300, date: "2024-02-05" },
+    { id: 3, item_type: "รายจ่าย", title: "ค่าโทรศัพท์", amount: 400, date: "2024-02-05" },
   ]);
   const [loading, setLoading] = useState(false);
   const [selectedMonth, setSelectedMonth] = useState(""); // ตัวกรองเดือน
